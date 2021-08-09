@@ -33,7 +33,7 @@
   <h3 align="center">Project Shale</h3>
 
   <p align="center">
-    project_description
+    This project utilizes server design.
     <br />
     <a href="https://github.com/melikaxo/hr-rfe4-shale"><strong>Explore the docs »</strong></a>
     <br />
@@ -83,9 +83,8 @@
 
 ### Built With
 
-* []()
-* []()
-* []()
+* MongoDB
+* PostGres
 
 
 
