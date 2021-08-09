@@ -27,7 +27,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/melikaxo/hr-rfe4-shale">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="http://t3.gstatic.com/licensed-image?q=tbn:ANd9GcTXqLCtTIJVMkp-ywPWa_aOmdB4XoAqH5maOZdmg1haILmb5DEWdS9UA-Mx3LDQtnPnj1qyjk2ip9KIZr-6_mg" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Project Shale</h3>
