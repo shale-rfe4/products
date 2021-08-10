@@ -23,39 +23,47 @@ const stylesSchema = new  m.Schema({
   original_price: 'string',
   default_style: 'string'
 })
-const stylesModel = new m.model('Styles', stylesSchema)
+const stylesModel = m.model('Styles', stylesSchema)
 const skusSchema = new  m.Schema({
   id: 'string',
   styleId: 'string',
   size: 'string',
   quantity: 'string'
 })
-const skusModel = new m.model('Skus', skusSchema)
+const skusModel = m.model('Skus', skusSchema)
 const photosSchema = new  m.Schema({
   id: 'string',
   styleId: 'string',
   url: 'string',
   thumbnail_url: 'string'
 })
-const photosModel = new m.model('Photos', photosSchema)
+const featuresModel = m.model('Features', featuresSchema)
+const featuresSchema = new m.Schema({
+  id: 'string',
+  product_id: 'string',
+  feature: 'string',
+  value: 'string'
+})
+const photosModel = m.model('Photos', photosSchema)
 const relatedSchema = new  m.Schema({
   id: 'string',
   current_product_id: 'string',
   related_product_id: 'string'
 })
-const relatedModel = new m.model('Related', relatedSchema)
+const relatedModel = m.model('Related', relatedSchema)
 async function seedDB() {
   const products = await processCSV('./csv/product.csv', productModel)
   const styles = await processCSV('./csv/styles.csv', stylesModel)
   const skus = await processCSV('./csv/skus.csv', skusModel)
   const photos = await processCSV('./csv/photos.csv', photosModel)
   const related = await processCSV('./csv/related.csv', relatedModel)
+  const features = await processCSV('./csv/features.csv', featuresModel)
 }
 function processCSV(csvFilePath, model) {
   return csv()
   .fromFile(csvFilePath)
   .then((jsonObj) => {
-    console.log('jsonOBJ:::', jsonObj)
+    // console.log('jsonOBJ:::', jsonObj)
     return model.insertMany(jsonObj, function (err) {
       if (err) {
         return console.log('you have an err:', err)
@@ -67,11 +75,6 @@ function processCSV(csvFilePath, model) {
     done()
   })
 }
-// processCSV('./csv/product.csv')
-// processCSV('./csv/styles.csv')
-// processCSV('./csv/skus.csv')
-// processCSV('./csv/photos.csv')
-// processCSV('./csv/related.csv')
 module.exports = {
   seed: seedDB,
   models: {
@@ -79,6 +82,7 @@ module.exports = {
     styles: stylesModel,
     skus: skusModel,
     photos: photosModel,
-    related: relatedModel
+    related: relatedModel,
+    features: featuresModel
   }
 }
