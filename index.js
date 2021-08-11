@@ -18,6 +18,18 @@ app.get('/products', (req, res) => {
     res.end()
   })
 })
+app.get('/related', (req, res) => {
+  // console.log("BODY::::", req.body)
+  db.models.related.find().limit(5)
+  .exec()
+  .then((data) => {
+    res.json(data)
+  })
+  .catch((err) => {
+    console.log('you have an err', err)
+    res.end()
+  })
+})
 app.get('/products/:product_id', (req, res) => {
   // console.log("BODY::::", req.body)
   db.models.product.find().limit(5)

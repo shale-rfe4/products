@@ -52,14 +52,16 @@ const relatedSchema = m.Schema({
 })
 const relatedModel = m.model('Related', relatedSchema)
 async function seedDB() {
-  const products = await processCSV('./csv/product.csv', productModel)
-  const styles = await processCSV('./csv/styles.csv', stylesModel)
-  const skus = await processCSV('./csv/skus.csv', skusModel)
+  // const products = await processCSV('./csv/product.csv', productModel)
+  // const styles = await processCSV('./csv/styles.csv', stylesModel)
+  // const skus = await processCSV('./csv/skus.csv', skusModel)
   const photos = await processCSV('./csv/photos.csv', photosModel)
-  const related = await processCSV('./csv/related.csv', relatedModel)
-  const features = await processCSV('./csv/features.csv', featuresModel)
+  // const related = await processCSV('./csv/related.csv', relatedModel)
+  // const features = await processCSV('./csv/features.csv', featuresModel)
 }
 function processCSV(csvFilePath, model) {
+  console.log("FILE:::", csvFilePath)
+  console.log("MODEL:::", model)
   return csv()
   .fromFile(csvFilePath)
   .then((jsonObj) => {
