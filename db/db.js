@@ -31,18 +31,18 @@ const skusSchema = new  m.Schema({
   quantity: 'string'
 })
 const skusModel = m.model('Skus', skusSchema)
-const photosSchema = new  m.Schema({
-  id: 'string',
-  styleId: 'string',
-  url: 'string',
-  thumbnail_url: 'string'
-})
-const featuresModel = m.model('Features', featuresSchema)
 const featuresSchema = new m.Schema({
   id: 'string',
   product_id: 'string',
   feature: 'string',
   value: 'string'
+})
+const featuresModel = m.model('Features', featuresSchema)
+const photosSchema = new  m.Schema({
+  id: 'string',
+  styleId: 'string',
+  url: 'string',
+  thumbnail_url: 'string'
 })
 const photosModel = m.model('Photos', photosSchema)
 const relatedSchema = new  m.Schema({
