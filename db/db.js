@@ -60,8 +60,8 @@ async function seedDB() {
   // const features = await processCSV('./csv/features.csv', featuresModel)
 }
 function processCSV(csvFilePath, model) {
-  console.log("FILE:::", csvFilePath)
-  console.log("MODEL:::", model)
+  // console.log("FILE:::", csvFilePath)
+  // console.log("MODEL:::", model)
   return csv()
   .fromFile(csvFilePath)
   .then((jsonObj) => {

@@ -18,7 +18,7 @@ app.get('/products', (req, res) => {
     res.end()
   })
 })
-app.get('/related', (req, res) => {
+app.get('/products/:product_id/related', (req, res) => {
   // console.log("BODY::::", req.body)
   db.models.related.find().limit(5)
   .exec()
