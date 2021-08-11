@@ -15,7 +15,7 @@ const productsSchema = m.Schema({
   default_price: 'string'
 })
 const productModel = m.model('Product', productsSchema)
-const stylesSchema = new  m.Schema({
+const stylesSchema = m.Schema({
   id: 'string',
   productId: 'string',
   name: 'string',
@@ -24,28 +24,28 @@ const stylesSchema = new  m.Schema({
   default_style: 'string'
 })
 const stylesModel = m.model('Styles', stylesSchema)
-const skusSchema = new  m.Schema({
+const skusSchema = m.Schema({
   id: 'string',
   styleId: 'string',
   size: 'string',
   quantity: 'string'
 })
 const skusModel = m.model('Skus', skusSchema)
-const featuresSchema = new m.Schema({
+const featuresSchema = m.Schema({
   id: 'string',
   product_id: 'string',
   feature: 'string',
   value: 'string'
 })
 const featuresModel = m.model('Features', featuresSchema)
-const photosSchema = new  m.Schema({
+const photosSchema = m.Schema({
   id: 'string',
   styleId: 'string',
   url: 'string',
   thumbnail_url: 'string'
 })
 const photosModel = m.model('Photos', photosSchema)
-const relatedSchema = new  m.Schema({
+const relatedSchema = m.Schema({
   id: 'string',
   current_product_id: 'string',
   related_product_id: 'string'
@@ -63,10 +63,12 @@ function processCSV(csvFilePath, model) {
   return csv()
   .fromFile(csvFilePath)
   .then((jsonObj) => {
-    // console.log('jsonOBJ:::', jsonObj)
-    return model.insertMany(jsonObj, function (err) {
+    console.log('started', csvFilePath)
+    return model.collection.insertMany(jsonObj, function (err) {
       if (err) {
         return console.log('you have an err:', err)
+      } else {
+        console.log('done')
       }
     })
   })

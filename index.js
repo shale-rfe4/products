@@ -2,7 +2,7 @@ const PORT = 3000
 const express = require('express')
 const bodyParser = require('body-parser')
 const db = require('./db/db.js')
-// console.log(db.seed())
+console.log(db.seed())
 const jsonParser = bodyParser.json()
 const app = express()
 app.use(jsonParser)
