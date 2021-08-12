@@ -55,7 +55,7 @@ async function seedDB() {
   // const products = await processCSV('./csv/product.csv', productModel)
   // const styles = await processCSV('./csv/styles.csv', stylesModel)
   // const skus = await processCSV('./csv/skus.csv', skusModel)
-  const photos = await processCSV('./csv/photos.csv', photosModel)
+  // const photos = await processCSV('./csv/photos.csv', photosModel)
   // const related = await processCSV('./csv/related.csv', relatedModel)
   // const features = await processCSV('./csv/features.csv', featuresModel)
 }
