@@ -59,6 +59,7 @@ async function seedDB() {
   // const related = await processCSV('./csv/related.csv', relatedModel)
   // const features = await processCSV('./csv/features.csv', featuresModel)
 }
+
 function processCSV(csvFilePath, model) {
   // console.log("FILE:::", csvFilePath)
   // console.log("MODEL:::", model)
@@ -74,6 +75,7 @@ function processCSV(csvFilePath, model) {
       }
     })
   })
+
   .catch((err) => {
     console.log('you have an err in processCSV:', err)
     done()

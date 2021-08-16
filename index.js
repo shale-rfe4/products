@@ -35,7 +35,7 @@ app.get('/products/:product_id/related', (req, res) => {
 app.get('/products/:product_id', (req, res) => {
   // console.log("BODY::::", req.body)
   //change product => productFeatures
-  db.models.product.find(
+  db.models.productFeatures.find(
           {"id": "1"},
           {"_id": 0, "features._id": 0, "features.id": 0, "features.product_id": 0}
         )
@@ -51,7 +51,25 @@ app.get('/products/:product_id', (req, res) => {
 })
 app.get('/products/:product_id/styles', (req, res) => {
   // console.log("BODY::::", req.body)
-  db.models.styles.find().limit(5)
+  db.models.styles.find().limit(1)
+  .exec()
+  .then((data) => {
+    res.json(data)
+  })
+  .catch((err) => {
+    console.log('you have an err', err)
+    res.end()
+  })
+  db.models.photos.find().limit(1)
+  .exec()
+  .then((data) => {
+    res.json(data)
+  })
+  .catch((err) => {
+    console.log('you have an err', err)
+    res.end()
+  })
+  db.models.skus.find().limit(1)
   .exec()
   .then((data) => {
     res.json(data)
