@@ -9,7 +9,7 @@ const jsonParser = bodyParser.json()
 const app = express()
 app.use(jsonParser)
 app.get('/products', (req, res) => {
-  // console.log("BODY::::", req.body)
+  // console.log('BODY::::', req.body)
   db.models.product.find().limit(5)
   .exec()
   .then((data) => {
@@ -21,7 +21,7 @@ app.get('/products', (req, res) => {
   })
 })
 app.get('/products/:product_id/related', (req, res) => {
-  // console.log("BODY::::", req.body)
+  // console.log('BODY::::', req.body)
   db.models.related.find().limit(5)
   .exec()
   .then((data) => {
@@ -33,12 +33,16 @@ app.get('/products/:product_id/related', (req, res) => {
   })
 })
 app.get('/products/:product_id', (req, res) => {
-  // console.log("BODY::::", req.body)
+  // console.log('BODY::::', req.body)
   //change product => productFeatures
   //create index on ProductID
+
+
+
+
   db.models.productFeatures.find(
-          {"id": "1"},
-          {"_id": 0, "features._id": 0, "features.id": 0, "features.product_id": 0}
+          {'id': '1'},
+          {'_id': 0, 'features._id': 0, 'features.id': 0, 'features.product_id': 0}
         )
 
   .exec()
@@ -51,7 +55,7 @@ app.get('/products/:product_id', (req, res) => {
   })
 })
 app.get('/products/:product_id/styles', (req, res) => {
-  // console.log("BODY::::", req.body)
+  // console.log('BODY::::', req.body)
   db.models.allStyles.find()
   .exec()
   .then((data) => {
@@ -72,13 +76,13 @@ app.listen(PORT, () => {
 
 // db.products.aggregate([{
 //   $lookup: {
-//     from: "features",
-//     localField: "id",
-//     foreignField: "id",
-//     as: "features"
+//     from: 'features',
+//     localField: 'id',
+//     foreignField: 'id',
+//     as: 'features'
 // }
 // },
-// {$out:  "productFeatures"
+// {$out:  'productFeatures'
 // }])
 
 // db.styles.aggregate([
@@ -98,27 +102,31 @@ app.listen(PORT, () => {
 // ])
 
 // {
-//   "$group": {
-//       "_id": { "id": "$id"},
-//       "uniqueIds": { "$addToSet": "$id" },
-//       "count": { "$sum": 1 }
+//   '$group': {
+//       '_id': { 'id': '$id'},
+//       'uniqueIds': { '$addToSet': '$id' },
+//       'count': { '$sum': 1 }
 //   }
 // },
-// { "$match": { "count": { "$gt": 1 } } },
-// {"$sort": {
-//     "count": -1
+// { '$match': { 'count': { '$gt': 1 } } },
+// {'$sort': {
+//     'count': -1
 //     }
 // },
 // db.styles.aggregate([
+//   {$match:
+//     {
+//       productId :
+//       {
+//         $lt:  100
+//       }
+//     }
+//   },
 //   {$lookup: {
 //     from: 'photos',
 //     localField: 'id',
 //     foreignField: 'styleId',
 //     as: 'photos'
-//   }},
-//   {$unwind: {
-//     path: '$photos',
-//     preserveNullAndEmptyArrays: true
 //   }},
 //   {$lookup: {
 //     from: 'skus',
@@ -126,9 +134,5 @@ app.listen(PORT, () => {
 //     foreignField: 'styleId',
 //     as: 'skus'
 //   }},
-//   {$unwind: {
-//     path: '$skus',
-//     preserveNullAndEmptyArrays: true
-//   }},
-//   {$out: 'allStyles'}
+//   {$out: 'testStyles'}
 // ])

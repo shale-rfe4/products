@@ -40,7 +40,13 @@ const allStylesSchema = m.Schema({
   name: 'string',
   sale_price: 'string',
   original_price: 'string',
-  default_style: 'string'
+  default_style: 'string',
+  photos: [
+    m.Schema.Types.Mixed
+  ],
+  skus: [
+    m.Schema.Types.Mixed
+  ]
 })
 const allStylesModel = m.model('allStyles', allStylesSchema, 'allStyles')
 const stylesSchema = m.Schema({
@@ -66,6 +72,7 @@ const photosSchema = m.Schema({
   thumbnail_url: 'string'
 })
 // mongoimport --db=sdcShales --collection=styles --file=styles.csv
+// /Users/melikacampbell/Documents/HRSeniorPhase/hr-rfe4-shale/csv/photos (2).csv
 1
 // mongoimport --type csv -d sdcShales -c photos --parseGrace skipField --headerline --drop ./csv/photos.csv
 // mongoimport --type csv --parseGrace skipRow --file millionrecords.csv --headerline

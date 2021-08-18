@@ -1,0 +1,50 @@
+{
+  config: {
+    target: 'http://localhost:8080',
+    http: {timeout: 60},
+    phases: [
+      {
+        duration: 60,
+        arrivalRate: 1
+      }
+    ]
+  },
+  scenarios: [
+    {
+      flow: [
+        {
+          get: {
+            url: '/products'
+          }
+        },
+        {
+          get: {
+            url: '/products/:product_id'
+          },
+        },
+        {
+          get: {
+            url: '/products/:product_id/related'
+          }
+        }, {
+          get: {
+            url: '/products/:product_id/styles'
+          }
+        },
+        {
+          post: {
+            url: '/products',
+            json: {
+            id: 4567890,
+            name: Martens.doc,
+            slogan: The best document for marten,
+            description: They are beautiful and comfortable,
+            category: Shoes,
+            default_price: 365
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
