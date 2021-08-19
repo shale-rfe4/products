@@ -1,7 +1,7 @@
 const csv = require('csvtojson')
 const mongoose = require('mongoose');
 const m = new mongoose.Mongoose();
-m.connect('mongodb://localhost:27017/sdcShales',
+m.connect('mongodb://18.224.190.93:27017/sdcShales',
 {
   useNewUrlParser: true,
   useUnifiedTopology: true
