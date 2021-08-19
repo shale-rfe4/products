@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const db = require('./db/db.js')
 console.log(db.seed())
 const mongo = require('mongodb');
+const { parseData } = require('./helpers.js')
 const MongoClient = mongo.MongoClient;
 const jsonParser = bodyParser.json()
 const app = express()
@@ -56,8 +57,10 @@ app.get('/products/:product_id', (req, res) => {
 })
 app.get('/products/:product_id/styles', (req, res) => {
   // console.log('BODY::::', req.body)
+  // console.log('body:::', req.params)
   db.models.allStyles.find()
   .exec()
+  .then((data) => parseData(data))
   .then((data) => {
     res.json(data)
   })
