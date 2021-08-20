@@ -57,7 +57,7 @@ app.get('/products/:product_id', (req, res) => {
 })
 app.get('/products/:product_id/styles', (req, res) => {
   // console.log('BODY::::', req.body)
-  // console.log('body:::', req.params)
+  console.log('body:::', req.params)
   db.models.allStyles.find()
   .exec()
   .then((data) => parseData(data))
@@ -76,66 +76,3 @@ app.post('/products', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is listening on Port:${PORT}`)
 })
-
-// db.products.aggregate([{
-//   $lookup: {
-//     from: 'features',
-//     localField: 'id',
-//     foreignField: 'id',
-//     as: 'features'
-// }
-// },
-// {$out:  'productFeatures'
-// }])
-
-// db.styles.aggregate([
-//   {$lookup: {
-//     from: 'photos',
-//     localField: 'id',
-//     foreignField: 'styleId',
-//     as: 'photos'
-//   }},
-//   {$lookup: {
-//     from: 'skus',
-//     localField: 'id',
-//     foreignField: 'styleId',
-//     as: 'skus'
-//   }},
-//   {$out: 'allStyles'}
-// ])
-
-// {
-//   '$group': {
-//       '_id': { 'id': '$id'},
-//       'uniqueIds': { '$addToSet': '$id' },
-//       'count': { '$sum': 1 }
-//   }
-// },
-// { '$match': { 'count': { '$gt': 1 } } },
-// {'$sort': {
-//     'count': -1
-//     }
-// },
-// db.styles.aggregate([
-//   {$match:
-//     {
-//       productId :
-//       {
-//         $lt:  100
-//       }
-//     }
-//   },
-//   {$lookup: {
-//     from: 'photos',
-//     localField: 'id',
-//     foreignField: 'styleId',
-//     as: 'photos'
-//   }},
-//   {$lookup: {
-//     from: 'skus',
-//     localField: 'id',
-//     foreignField: 'styleId',
-//     as: 'skus'
-//   }},
-//   {$out: 'testStyles'}
-// ])
